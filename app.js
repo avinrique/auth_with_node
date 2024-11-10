@@ -40,7 +40,7 @@ app.set('view engine', 'ejs')
 const mongoose = require('mongoose')
 const dbname = "cmakingapp"
 const dburl = "mongodb+srv://avin:avin@cluster0.fhxczjk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-
+mongoose.set('strictQuery', true)
 mongoose.connect(dburl+dbname,
 {useNewUrlParser: true},
 {useCreateIndex :true}).then(()=>{
@@ -232,16 +232,23 @@ passport.use(new GoogleStrategy({
 app.get("/auth/google",
   passport.authenticate('google', { scope: ["profile" , 'email' ,] })
 );
+
+
 app.get('/auth/google/secrets', 
   passport.authenticate('google', { failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
     res.redirect('/');
+});
+
+
+app.get('/logout', (req, res, next) => {
+    req.logout(function(err) {
+      if (err) { return next(err); }
+      res.redirect('/');
   });
-app.get('/logout', (req,res)=>{
-req.logOut();
-res.redirect('/')
-})
+});
+  
 
 //Routes handler
 const home = require('./routes/home')
