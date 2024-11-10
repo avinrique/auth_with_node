@@ -1,20 +1,29 @@
-var nodemailer = require('nodemailer');
-const sendEmails =async options =>{
+require('dotenv').config();
+const nodemailer = require('nodemailer');
+
+const sendEmails = async (options) => {
+  try {
     const transporter = nodemailer.createTransport({
-        service: 'Gmail',
-        auth: {
-          user: 'thevaincode@gmail.com',
-          pass: 'tifh kqvx qfzz msmn'
-        }
-      });
-      console.log("inside mailer")
-      const mailOptions = {
-        from: 'thevaincode@gmail.com',
-        to: options.email,
-        subject : "AIRM ",
-        html: `<h1 style="color : red;">The password reset link is :</h1>  <a href="${options.subject}"> ${options.subject}</a> `
-      };
-      console.log('shit it may be the reversehack')
-     await transporter.sendMail(mailOptions)
-}
-module.exports = sendEmails
+      service: process.env.EMAIL_SERVICE || 'Gmail',
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+      }
+    });
+
+    const mailOptions = {
+      from: process.env.EMAIL_FROM || 'your-email@gmail.com',
+      to: options.email,
+      subject: options.subject || 'No Subject',
+      html: options.html || `<p>No Content</p>`
+    };
+
+    await transporter.sendMail(mailOptions);
+    console.log('Email sent successfully');
+  } catch (error) {
+    console.error('Error sending email:', error);
+    throw new Error('Email sending failed');
+  }
+};
+
+module.exports = sendEmails;

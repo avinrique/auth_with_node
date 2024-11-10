@@ -31,7 +31,8 @@ exports.forgotcontrol = async(req,res)=>{
                 try{
                  await sendEmails({
                      email  : req.body.email ,
-                     subject : reseturl
+                     subject : "Password Reset Link" ,
+                     html :  `<h1 style="color : red;">The password reset link is :</h1>  <a href="${reseturl}"> ${reseturl}</a> `
                  })
                  console.log("i did make it")
                  res.redirect('/')
