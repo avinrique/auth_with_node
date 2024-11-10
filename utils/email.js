@@ -11,7 +11,7 @@ const sendEmails =async options =>{
       const mailOptions = {
         from: 'thevaincode@gmail.com',
         to: options.email,
-        subject : "Passoword reset",
+        subject : "AIRM ",
         html: `<h1 style="color : red;">The password reset link is :</h1>  <a href="${options.subject}"> ${options.subject}</a> `
       };
       console.log('shit it may be the reversehack')
