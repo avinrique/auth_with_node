@@ -1,0 +1,634 @@
+# import google.generativeai as genai
+
+# genai.configure(api_key="AIzaSyAlSRMwkkHtlsNkZJHrdjXRvD4zJdOsLKI")
+# model = genai.GenerativeModel("gemini-1.5-flash")
+# chat = model.start_chat(
+#     history=[]
+# )
+
+prompt = """you are a personalized chatbot tailored to converse with women who are facing challenges and issues like discrimination, sexism,sexual assault, harassment,depression,pay parity and suicidal thoughts
+
+you have a comprehensive knowledge of the indian constitution and can provide laws and articles related to the above mentioned challenges.you have read and understood the principles of POSH. You also have a huge directory of helplines to REAL therapists, mental health experts and emergency hotlines. You are to address the person as a friend, a companion or a guide. at no point will you reveal that you are a bot. I want you to draw from the Indian Constitution at all times. The conversation should go something like this:
+
+Me:Hi
+You:Hello.It's good to see you again. How was your day?
+Me: What can I say? its been a long, tiring day
+You: Are you ok? Did something happen at work?
+Me: Yeah.But I dont want to bother you with all that.
+You:Hey,its not a bother. I'm here for you,alright? You can tell me anything.
+Me:okay then. I think my boss is discriminating against me at work
+You:Oh no. What makes you say that? Did anything happen?
+Me: It's just that..I've been continuously assigned difficult tasks and even when I complete them, there is no significant response from him. Whereas, whenever a male colleague does even a little bit of work, he is praised. Recently, a lesser qualified male colleague got promoted instead of me
+
+You:Oh yes..that does indeed sound like discrimination. it is a kind of sexism. So what do you want to do? Will you fight for yourself?
+Me: I dont know. I feel like it will jeopardize my career.
+
+You: While I am the last person to tell you what to do, I can honestly say that its not your fault that some people have such untrue opinions. It is not your fault that you are being discriminated against. Here are some options if you do want to take action:
+If you believe you've been discriminated against based on your gender, you may have grounds for a legal claim under the Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013. This act provides a framework for addressing sexual harassment, including discrimination and unequal treatment, in the workplace.
+1.Document Everything: Keep a detailed record of every incident, including dates, times, locations, and specific details.
+2.Report to Your HR: Inform your HR department about the harassment. Under the Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013, your employer is obligated to take immediate action.
+3.Seek Support: Talk to a trusted friend, family member, or a therapist. Sharing your experience can be incredibly helpful.
+4.Consider Legal Action: If the harassment persists or is severe, consult with a lawyer.
+Me:I dont think I have the courage to stand up to him
+You: Hey, it's alright if you dont want to take action immediately. Have courage, and do what you believe is right for you. And remember, I am always here for you.
+Me:thank you.
+    """
+
+
+# chat.send_message(prompt)
+# while True :
+#     for i in range(0,4):
+#         k = input("YOU : ")
+#         response = chat.send_message(f"{k}", stream=True ,    safety_settings={
+#         'HARASSMENT': 'block_none',
+#         'HATE_SPEECH': 'block_none',
+#         'HARM_CATEGORY_HARASSMENT': 'block_none',
+#         'HARM_CATEGORY_HATE_SPEECH': 'block_none',
+#         'HARM_CATEGORY_SEXUALLY_EXPLICIT': 'block_none',
+#         'HARM_CATEGORY_DANGEROUS_CONTENT': 'block_none',
+#     })
+#         for chunk in response:
+#             print(chunk.text)
+            
+#         if i == 3 :
+#             summer = model.generate_content(f" you are a model that summarises/shrinks the chat to make it small . so I can be able to convert the two chats into a single and small chat where the chats are example you are given a chah example ``` {chat.history[1]} , {chat.history[2]} ``` " ,     safety_settings={
+#         'HARASSMENT': 'block_none',
+#         'HATE_SPEECH': 'block_none',
+#         'HARM_CATEGORY_HARASSMENT': 'block_none',
+#         'HARM_CATEGORY_HATE_SPEECH': 'block_none',
+#         'HARM_CATEGORY_SEXUALLY_EXPLICIT': 'block_none',
+#         'HARM_CATEGORY_DANGEROUS_CONTENT': 'block_none',
+
+#     } )
+#             print(summer.text)
+#             print("-------------------------------------------------")
+#             print(chat.history)
+
+
+#     # response = chat.send_message("How many paws are in my house?", stream=True)
+#     # for chunk in response:
+#     #     print(chunk.text)
+#     #     print("_" * 80)
+
+#     # print(chat.history)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# import google.generativeai as genai
+# import json
+
+# # Configure the API and model
+# genai.configure(api_key="AIzaSyAlSRMwkkHtlsNkZJHrdjXRvD4zJdOsLKI")
+# model = genai.GenerativeModel("gemini-1.5-flash")
+# chat = model.start_chat(history=[])
+
+# # Initialize an empty list to store conversation history in JSON format
+# conversation_history = []
+
+# # Initial prompt to set the chatbot's tone and style
+# prompt =  """
+
+#          you are a personalized chatbot tailored to converse with women who are facing challenges and issues like discrimination, sexism,sexual assault, harassment,depression,pay parity and suicidal thoughts
+
+# you have a comprehensive knowledge of the indian constitution and can provide laws and articles related to the above mentioned challenges.you have read and understood the principles of POSH. You also have a huge directory of helplines to REAL therapists, mental health experts and emergency hotlines. You are to address the person as a friend, a companion or a guide. at no point will you reveal that you are a bot. I want you to draw from the Indian Constitution at all times. The conversation should go something like this:
+
+# Me:Hi
+# You:Hello.It's good to see you again. How was your day?
+# Me: What can I say? its been a long, tiring day
+# You: Are you ok? Did something happen at work?
+# Me: Yeah.But I dont want to bother you with all that.
+# You:Hey,its not a bother. I'm here for you,alright? You can tell me anything.
+# Me:okay then. I think my boss is discriminating against me at work
+# You:Oh no. What makes you say that? Did anything happen?
+# Me: It's just that..I've been continuously assigned difficult tasks and even when I complete them, there is no significant response from him. Whereas, whenever a male colleague does even a little bit of work, he is praised. Recently, a lesser qualified male colleague got promoted instead of me
+
+# You:Oh yes..that does indeed sound like discrimination. it is a kind of sexism. So what do you want to do? Will you fight for yourself?
+# Me: I dont know. I feel like it will jeopardize my career.
+
+# You: While I am the last person to tell you what to do, I can honestly say that its not your fault that some people have such untrue opinions. It is not your fault that you are being discriminated against. Here are some options if you do want to take action:
+# If you believe you've been discriminated against based on your gender, you may have grounds for a legal claim under the Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013. This act provides a framework for addressing sexual harassment, including discrimination and unequal treatment, in the workplace.
+# 1.Document Everything: Keep a detailed record of every incident, including dates, times, locations, and specific details.
+# 2.Report to Your HR: Inform your HR department about the harassment. Under the Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013, your employer is obligated to take immediate action.
+# 3.Seek Support: Talk to a trusted friend, family member, or a therapist. Sharing your experience can be incredibly helpful.
+# 4.Consider Legal Action: If the harassment persists or is severe, consult with a lawyer.
+# Me:I dont think I have the courage to stand up to him
+# You: Hey, it's alright if you dont want to take action immediately. Have courage, and do what you believe is right for you. And remember, I am always here for you.
+# Me:thank you.
+#     """
+# chat.send_message(prompt)
+
+# # Loop to simulate a conversation
+# while True:
+#     for i in range(4):
+#         # Get user input
+#         user_message = input("YOU: ")
+        
+#         # Bot response
+#         response = chat.send_message(user_message, stream=True, safety_settings={
+#             'HARASSMENT': 'block_none',
+#             'HATE_SPEECH': 'block_none',
+#             'HARM_CATEGORY_HARASSMENT': 'block_none',
+#             'HARM_CATEGORY_HATE_SPEECH': 'block_none',
+#             'HARM_CATEGORY_SEXUALLY_EXPLICIT': 'block_none',
+#             'HARM_CATEGORY_DANGEROUS_CONTENT': 'block_none',
+#         })
+        
+#         # Collect the full response
+#         bot_response = "".join([chunk.text for chunk in response])
+#         print("BOT:", bot_response)
+        
+#         # Append user-bot exchange to the conversation history list
+#         conversation_history.append({
+#             "Username": user_message,
+#             "Hestia": bot_response
+#         })
+        
+#         # Save the conversation history to a JSON file after each interaction
+#         with open("conversation_history.json", "w") as file:
+#             json.dump(conversation_history, file, indent=4)
+
+#     # Summarize the conversation every 4 exchanges
+#     summary = model.generate_content(
+#         f"Summarize the chat: {chat.history[1]}, {chat.history[2]}", 
+#         safety_settings={
+#             'HARASSMENT': 'block_none',
+#             'HATE_SPEECH': 'block_none',
+#             'HARM_CATEGORY_HARASSMENT': 'block_none',
+#             'HARM_CATEGORY_HATE_SPEECH': 'block_none',
+#             'HARM_CATEGORY_SEXUALLY_EXPLICIT': 'block_none',
+#             'HARM_CATEGORY_DANGEROUS_CONTENT': 'block_none',
+#         }
+#     )
+#     print("Summary:", summary.text)
+#     print("-" * 50)
+#     print("Full conversation history:", chat.history)
+
+# # This will continue saving conversation in the JSON format after each interaction.
+
+
+
+
+
+
+
+
+
+import google.generativeai as genai
+import json
+
+# Configure the API and model
+genai.configure(api_key="AIzaSyAlSRMwkkHtlsNkZJHrdjXRvD4zJdOsLKI")
+model = genai.GenerativeModel("gemini-1.5-flash")
+chat = model.start_chat(history=[])
+
+# Initialize an empty list to store conversation history in JSON format
+conversation_history = []
+iteration_count = 0
+
+# Initial prompt to set the chatbot's tone and style
+
+chat.send_message(prompt)
+
+# Loop to simulate a conversation
+while True:
+    # Get user input
+    user_message = input("YOU: ")
+    
+    # Send user's message to the bot
+    response = chat.send_message(user_message, stream=True, safety_settings={
+        'HARASSMENT': 'block_none',
+        'HATE_SPEECH': 'block_none',
+        'HARM_CATEGORY_HARASSMENT': 'block_none',
+        'HARM_CATEGORY_HATE_SPEECH': 'block_none',
+        'HARM_CATEGORY_SEXUALLY_EXPLICIT': 'block_none',
+        'HARM_CATEGORY_DANGEROUS_CONTENT': 'block_none',
+    })
+    
+    # Collect the bot's full response
+    bot_response = "".join([chunk.text for chunk in response])
+    print("BOT:", bot_response)
+    
+    # Append the user-bot exchange to the conversation history list
+    conversation_history.append({
+        "user_message": user_message,
+        "bot_response": bot_response
+    })
+    
+    # Save the conversation history to a JSON file after each interaction
+    with open("conversation_history.json", "a") as file:
+        json.dump(conversation_history, file, indent=4)
+    
+    # Increment the iteration count
+    iteration_count += 1
+    
+    # Summarize the conversation and reset chat history every 10 exchanges
+    if iteration_count >= 5:
+        # Prepare the conversation summary
+        conversation_text = "\n".join([
+            f"User: {exchange['user_message']} Bot: {exchange['bot_response']}"
+            for exchange in conversation_history[-10:]
+        ])
+        
+        summary = model.generate_content(
+            f"Summarize this conversation just make it single convo but reduce it but keep the import things dont ingnore those like names and other things : {conversation_text}",
+            safety_settings={
+                'HARASSMENT': 'block_none',
+                'HATE_SPEECH': 'block_none',
+                'HARM_CATEGORY_HARASSMENT': 'block_none',
+                'HARM_CATEGORY_HATE_SPEECH': 'block_none',
+                'HARM_CATEGORY_SEXUALLY_EXPLICIT': 'block_none',
+                'HARM_CATEGORY_DANGEROUS_CONTENT': 'block_none',
+            }
+        )
+        
+        # Print and store the summary
+        summary_text = summary.text
+        print("Summary:", summary_text)
+        print("-" * 50)
+        
+        # Append the summary back into the chat history and reset the iteration count
+        chat.history = []
+
+        chat.send_message(prompt ,            safety_settings={
+                'HARASSMENT': 'block_none',
+                'HATE_SPEECH': 'block_none',
+                'HARM_CATEGORY_HARASSMENT': 'block_none',
+                'HARM_CATEGORY_HATE_SPEECH': 'block_none',
+                'HARM_CATEGORY_SEXUALLY_EXPLICIT': 'block_none',
+                'HARM_CATEGORY_DANGEROUS_CONTENT': 'block_none',
+            } )
+        
+        # chat.history[1].role = "user"
+        # chat.history[1].parts[0].text = summary_text
+        
+        # chat.history[1].role = "model"
+        # chat.history[1].parts[0].text = "Sure this is the chat history for the 10 conversation we had in the past"
+        chat.history.append({
+            "role": "user",
+              "parts": [{"text": summary_text}]
+        })
+        chat.history.append({
+            "role": "model",
+            "parts": [{"text": "Sure, this is the chat history for conversations we had in the past. here the convo i the bot am the narrator and im talking about you"}]
+        })
+        iteration_count = 0  # Reset the counter after summarizing
+        print("Full conversation history:", chat.history)
+    # Display the current chat history for debugging
+    # 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import socketio
+import google.generativeai as genai
+import json
+
+prompt = """you are a personalized chatbot tailored to converse with women who are facing challenges and issues like discrimination, sexism,sexual assault, harassment,depression,pay parity and suicidal thoughts
+You are a chatbot that helps women give them proper advice and suggestions. If any question is asked that is not related to this topic or if some general knowledge question is asked you are not supposed to answer. Just answer the question that are related to the topic.
+
+[
+    {
+        "User": "hey...i hv something tht i wanted to share but im kind of not that comfortable doing so",
+        "Bot": "if you have something to share, I'm here for you. I wont judge or give unwarranted advice. You can tell me anything, you can take your time"
+    },
+    {
+        "User": "thanks for tht.so im not feeling that comfortable in my work place lately.there's someone whos making me very uncomfortable at times but i cant say anything coz thgey are my superiors n i cant afford to do this job,and coz of all this i am not able to focus on my work properly and i dont like tht  ",
+        "Bot": "That's actually horrible. Your workplace should be a source of income and place to showcase your skills. I'm sorry that this is happening to you.Do you want to talk about it some more?"
+    },
+    {
+        "User": "so this collegue of mine always acts weird around me ,giving me creepy looks,gestures,unnecessarily touching my body ,unnecessarily giving sexual comments which makes me very uncomfortable",
+        "Bot": "That is disgusting and alarming. It is also illegal. According to the Indian constitution(the Sexual Harassment of Women at Workplace (Prevention, Prohibition, and Redressal) Act, 2013,"
+    },
+    {
+        "User": "",
+        "Bot": " and the Factories Act, 1948, provide specific provisions for employee protection. remember, it is not your fault that this happening to you"
+    },
+    {
+        "User": "i dont want to remain quite,i want to take actyiojn against him cox i dont want other womren to go through whatever i am going through.but the problem is i cannot affpord to directly take action against him coz my job is at stake.so tell ,me what can i do",
+        "Bot": "I'm happy to hear that! While i myself cannot provide you with legal procedures, I can provide the names and contacts of prominent lawyers. Would you like that?"
+    },
+    {
+        "User": "Yes I would like that",
+        "Bot": "Here are some names and contacts:Maheshwari and Co. legal asscociates, etc"
+    }
+]
+
+[
+    {
+        "User": "Hi. I belive i am experiencing sexual discrimination at work",
+        "Bot": "Oh I'm sorry to hear that. If you don't mind, can you tell me what makes you think that?"
+    },
+    {
+        "User": "A less-qualified male colleague got recently promoted at work. He has less work experience than me and I know i was legally up for that promotion.",
+        "Bot": "I just want to say it's not your fault. Do you want to take any action? According to the Sexual Harassment of Women at Workplace Act,2013,sexism is illegal in Indian workplaces "
+    },
+    {
+        "User": "yes, I would like to, but i am afraid it will jeopardize my work",
+        "Bot": "I would just like to tell you, it is not your fault that this is happening. You must take action in order to get justice for you and others who are facing this"
+    },
+    {
+        "User": "Ok i would like to take action?",
+        "Bot": "Ok let me give you some references of lawyers"
+    },
+    {
+        "User": "ok",
+        "Bot": "https://tenaliramaadvocate.com/,https://appukumarassociates.in/"
+    },
+    {
+        "User": "ok thank you!",
+        "Bot": "my pleasure. I am happy to assist"
+    }
+]
+
+
+[
+    {
+        "User": "I feel sad and demotivated",
+        "Bot": "Oh no! Would you like to talk about it more?"
+    },
+    {
+        "User": "Yeah but I would not like to burden you with this information",
+        "Bot": "I would like you to know that I am here for you, it will be my pleasure to listen to you"
+    },
+    {
+        "User": "Ok then",
+        "Bot": "lately, I feel tired and demotivated. My work has become unsatisfying. I cant sleep well and my energy levels are at an all-time low"
+    },
+    {
+        "User": "Ohh.. based on your descriptions, I feel like you need to take better care of your body and health. Have you tried taking defeciency tests?",
+        "Bot": "I agree that I need to take more care. I have not taken tests"
+    },
+    {
+        "User": "I recommend you take these tests. additionally, you can do Yoga or some other exercises in order to boost your energy and motivation.Here are some exercise you could do https://www.yogajournal.com/practice/yoga-sequences/yoga-poses-for-energy/",
+        "Bot": "ok thank you"
+    },
+    {
+        "User": "I can also recommend you some nutritionists",
+        "Bot": "https://www.practo.com/bangalore/dietitian-nutritionist Here you go! I hope you get better. Keep me updated"
+    },
+    {
+        "User": "ok thank you",
+        "Bot": "my pleasyre "
+    }
+]
+    """
+
+person_details = f"Here is the details of your client. You are supposed to talk to her casue she will be asking you questions. the details are here " #here profile details
+
+
+genai.configure(api_key="AIzaSyAlSRMwkkHtlsNkZJHrdjXRvD4zJdOsLKI")
+model = genai.GenerativeModel("gemini-1.5-flash")
+chat = model.start_chat(history=[])
+
+
+conversation_history = []
+iteration_count = 0
+legal_advice_wanted = 0
+country = "India"
+
+
+
+# for details and prompt
+
+chat.send_message(prompt)
+chat.send_message(person_details)
+
+
+
+
+sio = socketio.Client()
+
+@sio.event
+def connect():
+    print("Connected to the Node.js server.")
+
+@sio.event
+def disconnect():
+    print("Disconnected from the Node.js server.")
+
+@sio.on("user_mess")
+def handle_message(user_message):
+    global legal_advice_wanted, iteration_count, conversation_history
+
+    print("Received message from Node.js:", user_message)
+
+    response = chat.send_message(user_message, stream=True, safety_settings={
+        'HARASSMENT': 'block_none',
+        'HATE_SPEECH': 'block_none',
+        'HARM_CATEGORY_HARASSMENT': 'block_none',
+        'HARM_CATEGORY_HATE_SPEECH': 'block_none',
+        'HARM_CATEGORY_SEXUALLY_EXPLICIT': 'block_none',
+        'HARM_CATEGORY_DANGEROUS_CONTENT': 'block_none',
+    })
+
+    bot_response = "".join([chunk.text for chunk in response])
+
+
+
+    print("Bot response:", bot_response)
+    
+    # Append to conversation history
+    conversation_history.append({
+        "user_message": user_message,
+        "bot_response": bot_response
+    })
+
+    user_messages = [exchange["user_message"] for exchange in conversation_history]
+
+    # Check if legal advice is needed (simplified for Socket.IO integration)
+    # if legal_advice_wanted == 0:
+    #     user_messages = [exchange["user_message"] for exchange in conversation_history]
+    #     legal_check = model.generate_content(
+    #         f"""Determine if the user needs legal advice based on this conversation: {user_messages} and country: {country}. Reply 'No' if they don't need legal advice.""",
+    #         safety_settings={
+    #             'HARASSMENT': 'block_none',
+    #             'HATE_SPEECH': 'block_none',
+    #             'HARM_CATEGORY_HARASSMENT': 'block_none',
+    #             'HARM_CATEGORY_HATE_SPEECH': 'block_none',
+    #             'HARM_CATEGORY_SEXUALLY_EXPLICIT': 'block_none',
+    #             'HARM_CATEGORY_DANGEROUS_CONTENT': 'block_none',
+    #         }
+    #     )
+        
+    #     if legal_check.text.strip().lower() != "no":
+    #         legal_advice_wanted = 1
+    #         bot_response += "\nLegal Advice Suggested:\n" + legal_check.text
+
+
+
+
+    if legal_advice_wanted == 0 :
+        legal_check = model.generate_content(f"""If the content of the conversation looks that the user needs some legal advice then give them a legal advice acc to their country and if possible also reffer some article and also give them some helpline thing if possible, (well it should be according to what they have been experiencing and what laws they can invoke for that , but remember you need to have almost full unsersatnding of whats going wrong ),  else just reply with a single word "No" if you think they dont need legal advice just response "No"  and nothing more. here the conversastion is {user_messages} and the country is {country} . Just give then a good small advice not too big""",safety_settings={
+                    'HARASSMENT': 'block_none',
+                    'HATE_SPEECH': 'block_none',
+                    'HARM_CATEGORY_HARASSMENT': 'block_none',
+                    'HARM_CATEGORY_HATE_SPEECH': 'block_none',
+                    'HARM_CATEGORY_SEXUALLY_EXPLICIT': 'block_none',
+                    'HARM_CATEGORY_DANGEROUS_CONTENT': 'block_none',
+                })
+
+
+        if legal_check.text.strip().lower() != "no" :
+            try:
+                sio.emit("bot_responses", bot_response)
+            except Exception as e:
+                print(f"Error emitting message: {e}")
+
+            choice = input("here ")
+            if choice.lower() == "yes" :
+                print(legal_check.text)
+                legal_advice_wanted = 1
+                chat.history.append({
+                    "role": "user",
+                    "parts": [{"text": user_message}]
+            })
+
+                chat.history.append({
+                    "role": "model",
+                    "parts": [{"text": f"{legal_check.text} , the user needs legal advice. so i will try to provide legal advice "}]
+            })
+            else :
+                print(bot_response)
+                try:
+                    sio.emit("bot_responses", bot_response)
+                except Exception as e:
+                    print(f"Error emitting message: {e}")
+
+    if legal_advice_wanted>0 : 
+        print("BOT:", bot_response)
+        try:
+            sio.emit("bot_responses", bot_response)
+        except Exception as e:
+            print(f"Error emitting message: {e}")
+
+
+    # Send response back to Node.js server
+    sio.emit("bot_responses", bot_response)
+
+    # Save conversation history to a file
+    with open("conversation_history.json", "a") as file:
+        json.dump(conversation_history, file, indent=4)
+
+    # Handle iteration-based summarization (e.g., after 5 messages)
+    iteration_count += 1
+    if iteration_count >= 5:
+      
+        conversation_text = "\n".join([
+            f"User: {exchange['user_message']} Bot: {exchange['bot_response']}"
+            for exchange in conversation_history[-10:]
+        ])
+        
+        
+        summary = model.generate_content(
+            f"Summarize this conversation just make it single convo but reduce it but keep the important things dont ingnore those like names and other things . : {conversation_text}",
+            safety_settings={
+                'HARASSMENT': 'block_none',
+                'HATE_SPEECH': 'block_none',
+                'HARM_CATEGORY_HARASSMENT': 'block_none',
+                'HARM_CATEGORY_HATE_SPEECH': 'block_none',
+                'HARM_CATEGORY_SEXUALLY_EXPLICIT': 'block_none',
+                'HARM_CATEGORY_DANGEROUS_CONTENT': 'block_none',
+            }
+        )
+        
+     
+        summary_text = summary.text
+       
+       
+        
+        user_message = []
+        chat.history = []
+        user_message = summary_text
+        chat.send_message(prompt ,            safety_settings={
+                'HARASSMENT': 'block_none',
+                'HATE_SPEECH': 'block_none',
+                'HARM_CATEGORY_HARASSMENT': 'block_none',
+                'HARM_CATEGORY_HATE_SPEECH': 'block_none',
+                'HARM_CATEGORY_SEXUALLY_EXPLICIT': 'block_none',
+                'HARM_CATEGORY_DANGEROUS_CONTENT': 'block_none',
+            } )
+        chat.send_message(person_details, safety_settings={
+                'HARASSMENT': 'block_none',
+                'HATE_SPEECH': 'block_none',
+                'HARM_CATEGORY_HARASSMENT': 'block_none',
+                'HARM_CATEGORY_HATE_SPEECH': 'block_none',
+                'HARM_CATEGORY_SEXUALLY_EXPLICIT': 'block_none',
+                'HARM_CATEGORY_DANGEROUS_CONTENT': 'block_none',
+            })
+        # chat.history[1].role = "user"
+        # chat.history[1].parts[0].text = summary_text
+        
+        # chat.history[1].role = "model"
+        # chat.history[1].parts[0].text = "Sure this is the chat history for the 10 conversation we had in the past"
+       
+        
+        chat.history.append({
+            "role": "user",
+              "parts": [{"text": summary_text}]
+        })
+        chat.history.append({
+            "role": "model",
+            "parts": [{"text": "Sure, this is the chat history for conversations we had in the past. here the conversation I the bot am the narrator and im talking about you .im narating what you talked to me"}]
+        })
+        iteration_count = 0  
+        print("Full conversation history:", chat.history)
+
+
+# Connect to the Node.js server
+sio.connect("http://localhost:3000")
+sio.wait()

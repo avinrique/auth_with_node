@@ -1,6 +1,90 @@
 [
     {
-        "user_message": "hey i am getting abused",
-        "bot_response": "Hey, I'm so sorry to hear that. I'm here for you, okay? Can you tell me a little bit more about what's happening? Is it happening at home, at school, or somewhere else? \n\nIt's really important to remember that you are not alone, and there are people who care about you and want to help. \n\nDo you feel safe right now? \n"
+        "user_message": "hey myth",
+        "bot_response": "Hey there!  It sounds like you're reaching out to me.  What's on your mind? I'm here to listen and help in any way I can. \n"
+    },
+    {
+        "user_message": "its history",
+        "bot_response": "I understand you're interested in history! I can't answer general knowledge questions, but if you're facing a specific challenge related to discrimination, sexism, sexual assault, harassment, depression, pay parity, or suicidal thoughts, I'm here to help. \n\nIs there something specific you'd like to talk about? \n"
+    },
+    {
+        "user_message": "hey myth",
+        "bot_response": "Hey there!  What's on your mind today?  I'm here to listen and offer support.  \n\nIs there anything you'd like to talk about?  \n"
+    },
+    {
+        "user_message": "how",
+        "bot_response": "\"How\" is a pretty broad question.  Can you tell me more about what you're wondering about?  \n\nFor example, are you asking \"How can I deal with...\" or \"How does this work...\"?\n\nThe more information you give me, the better I can understand your question and give you helpful advice.  \n"
+    },
+    {
+        "user_message": "i have a brain fog",
+        "bot_response": "I'm sorry to hear you're experiencing brain fog. That can be really frustrating and debilitating. \n\nIt's important to note that I'm a chatbot and can't offer medical advice. I can't diagnose or treat any condition. However, I can offer some suggestions for things you might want to consider:\n\n* **Stress and Sleep:**  Brain fog can be linked to stress and lack of sleep. Are you feeling overwhelmed or struggling to get enough restful sleep? \n* **Diet and Hydration:** What does your typical diet consist of? Are you staying hydrated? These can play a role in your overall cognitive function.\n* **Underlying Conditions:** Brain fog can sometimes be a symptom of other health conditions. If you haven't already, it's a good idea to consult a medical professional.\n\nIf you're feeling overwhelmed or having trouble coping with the brain fog, remember you're not alone. Talking to a therapist or counselor can be incredibly helpful. \n\nIs there anything else you'd like to talk about regarding your experience with brain fog?  \n\n\n"
+    },
+    {
+        "user_message": "hey",
+        "bot_response": "Hi there! I'm here to listen and help if you're going through anything related to discrimination, sexism, sexual assault, harassment, depression, pay parity, or suicidal thoughts. Is there anything you'd like to talk about? \n"
+    },
+    {
+        "user_message": "whats up?",
+        "bot_response": "Not much, just here to help if you need it!  What's on your mind today? \ud83d\ude0a \n"
+    },
+    {
+        "user_message": "hey",
+        "bot_response": "Hey there! \ud83d\udc4b What's going on?  I'm here to listen if you'd like to talk about anything related to discrimination, sexism, or other issues. \n"
+    },
+    {
+        "user_message": "hey",
+        "bot_response": "Hey there!  \ud83d\ude0a  I'm here to listen and support if you're going through anything related to sexism, discrimination, or other challenges.  Is there anything you'd like to talk about? \n"
+    },
+    {
+        "user_message": "hry",
+        "bot_response": "Hey! \ud83d\udc4b  What's going on?  I'm here to listen and offer support if you're going through any challenges related to sexism, discrimination, or other difficult situations. \n"
+    },
+    {
+        "user_message": "hey",
+        "bot_response": "Hey there! \ud83d\udc4b  What's on your mind today?  I'm here to listen and offer support if you need it.  \n"
+    },
+    {
+        "user_message": "hey",
+        "bot_response": "Hey there! \ud83d\udc4b  What's on your mind today?  I'm here to listen and offer support if you need it.  \n"
+    },
+    {
+        "user_message": "how ar eyou doing",
+        "bot_response": "I'm doing well, thanks for asking! \ud83d\ude0a  I'm always here if you need to talk about something.  Is there anything you'd like to share with me? \n"
+    },
+    {
+        "user_message": "i feel im getting abused",
+        "bot_response": "I'm so sorry to hear that you're feeling abused.  That's a really difficult situation to be in, and it's completely valid to feel overwhelmed and scared.  \n\nPlease know that you're not alone, and there are people who can help.  I can't provide legal advice, but I can offer some resources that might be helpful.  Would you like me to connect you with some support organizations or hotlines? \n"
+    },
+    {
+        "user_message": "what should i do?",
+        "bot_response": "I understand you're asking for advice on what to do about the abuse you're experiencing.  It's important to remember that I'm not a lawyer, and I can't give legal advice.  However, I can help you find resources and information to help you make informed decisions. \n\nHere are some steps you can take:\n\n**1. Reach out for support:** \n* **National Commission for Women (NCW) Helpline:** 1800-180-5151 - They can offer information and resources, including legal aid options.\n* **Local Women's Shelters:**  These organizations can provide a safe place to stay and offer support services. \n* **Trusted Friends or Family:**  Talking to someone you trust can help you feel less alone.\n\n**2. Document the Abuse:**\n* **Keep a Journal:**  Write down details of any incidents of abuse, including dates, times, and what happened.\n* **Gather Evidence:**  If possible, collect any evidence of the abuse, such as photos, texts, or emails.\n\n**3. Consider Legal Options:**\n* **Report to the Police:**  If you feel safe to do so, you can report the abuse to the police. \n* **Consult a Lawyer:**  A lawyer can help you understand your legal options and advise you on how to proceed.\n\n**4. Seek Therapy:**\n* **Mental Health Professional:** A therapist can help you process the trauma you've experienced and develop coping mechanisms.\n\nRemember, you're not alone. Please reach out for support and help. There are people who care about you and want to help you through this difficult time. \n\nIt's important to note that I cannot provide legal advice. If you are concerned about your safety, please reach out to the NCW helpline or a local women's shelter immediately. \n\n\n"
+    },
+    {
+        "user_message": "hey ",
+        "bot_response": "Hey there! It sounds like you're reaching out for help, and I'm here for you.  What's on your mind?  \n"
+    },
+    {
+        "user_message": "whast up",
+        "bot_response": "Hey! Not much, just hanging out in the digital world, waiting to hear what's going on with you. \ud83d\ude0a  What about you?  What's going on in your world today? \n"
+    },
+    {
+        "user_message": "hey",
+        "bot_response": "Hey there!  What's up? \ud83d\ude0a  I'm here to listen if you need to talk. \n"
+    },
+    {
+        "user_message": "i was kinda abused",
+        "bot_response": "I'm so sorry to hear that you've been abused.  It's completely understandable that you're feeling hurt and upset.  I want you to know that you're not alone, and there are people who can help.  Would you like to talk about it more?  I'm here to listen without judgment. \n"
+    },
+    {
+        "user_message": "hey",
+        "bot_response": "Hey there!  What's on your mind? I'm here to listen. \ud83d\ude0a \n"
+    },
+    {
+        "user_message": "hey whats up?",
+        "bot_response": "Hey there!  It\u2019s great to hear from you.  What\u2019s going on? How can I help today? \n"
+    },
+    {
+        "user_message": "i think im getting abused",
+        "bot_response": "I'm so sorry to hear that. It sounds like you're going through a really tough time. I want you to know that you're not alone. Abuse is never okay, and it's important to remember that you deserve to be safe and treated with respect. \n\nCan you tell me more about what's happening?  I'm here to listen without judgment.  It might help to talk about what's going on.\n"
     }
 ]

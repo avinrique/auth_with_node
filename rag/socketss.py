@@ -1,3 +1,6 @@
+import socketio
+import google.generativeai as genai
+import json
 
 prompt = """you are a personalized chatbot tailored to converse with women who are facing challenges and issues like discrimination, sexism,sexual assault, harassment,depression,pay parity and suicidal thoughts
 You are a chatbot that helps women give them proper advice and suggestions. If any question is asked that is not related to this topic or if some general knowledge question is asked you are not supposed to answer. Just answer the question that are related to the topic.
@@ -92,13 +95,6 @@ You are a chatbot that helps women give them proper advice and suggestions. If a
 person_details = f"Here is the details of your client. You are supposed to talk to her casue she will be asking you questions. the details are here " #here profile details
 
 
-import google.generativeai as genai
-import json
-import socketio
-
-
-
-
 genai.configure(api_key="AIzaSyAlSRMwkkHtlsNkZJHrdjXRvD4zJdOsLKI")
 model = genai.GenerativeModel("gemini-1.5-flash")
 chat = model.start_chat(history=[])
@@ -107,8 +103,16 @@ chat = model.start_chat(history=[])
 conversation_history = []
 iteration_count = 0
 legal_advice_wanted = 0
+country = "India"
+
+
+
+# for details and prompt
 
 chat.send_message(prompt)
+chat.send_message(person_details)
+
+choice = None
 
 
 sio = socketio.Client()
@@ -120,19 +124,16 @@ def connect():
 @sio.event
 def disconnect():
     print("Disconnected from the Node.js server.")
-
-
-
-chat.send_message(person_details)
-summeries = []
-country = "India"
-
-
+@sio.on("userResponse")
+def needlegal(resp):
+    global choice
+    choice = resp
 @sio.on("user_mess")
-def handle_message(user_message ):
+def handle_message(user_message):
     global legal_advice_wanted, iteration_count, conversation_history
-    print("hey")
-    
+
+    print("Received message from Node.js:", user_message)
+
     response = chat.send_message(user_message, stream=True, safety_settings={
         'HARASSMENT': 'block_none',
         'HATE_SPEECH': 'block_none',
@@ -141,7 +142,13 @@ def handle_message(user_message ):
         'HARM_CATEGORY_SEXUALLY_EXPLICIT': 'block_none',
         'HARM_CATEGORY_DANGEROUS_CONTENT': 'block_none',
     })
+
     bot_response = "".join([chunk.text for chunk in response])
+
+
+
+    print("Bot response:", bot_response)
+    
     
     conversation_history.append({
         "user_message": user_message,
@@ -149,6 +156,7 @@ def handle_message(user_message ):
     })
 
     user_messages = [exchange["user_message"] for exchange in conversation_history]
+
 
 
 
@@ -165,12 +173,17 @@ def handle_message(user_message ):
 
         if legal_check.text.strip().lower() != "no" :
             try:
-                sio.emit("bot_responses", bot_response)
+                sio.emit("bot_responses", "need legal advice")
+
+
             except Exception as e:
                 print(f"Error emitting message: {e}")
 
-            choice = input("here ")
-            if choice.lower() == "yes" :
+            while 1 :
+                if choice != None :
+                    break
+
+            if choice.strip().lower() == "yes" :
                 print(legal_check.text)
                 legal_advice_wanted = 1
                 chat.history.append({
@@ -191,19 +204,21 @@ def handle_message(user_message ):
 
     if legal_advice_wanted>0 : 
         print("BOT:", bot_response)
-        sio.emit("bot_responses", bot_response)
         try:
             sio.emit("bot_responses", bot_response)
         except Exception as e:
             print(f"Error emitting message: {e}")
 
 
-    with open("conversation_history.json", "a") as file:
+    
+    sio.emit("bot_responses", bot_response)
+
+  
+    with open("conversation_history.json", "w") as file:
         json.dump(conversation_history, file, indent=4)
+
     
     iteration_count += 1
-    
-  
     if iteration_count >= 5:
       
         conversation_text = "\n".join([
@@ -226,8 +241,8 @@ def handle_message(user_message ):
         
      
         summary_text = summary.text
-        print("Summary:", summary_text)
-        print("-" * 50)
+       
+       
         
         user_message = []
         chat.history = []
@@ -248,19 +263,6 @@ def handle_message(user_message ):
                 'HARM_CATEGORY_SEXUALLY_EXPLICIT': 'block_none',
                 'HARM_CATEGORY_DANGEROUS_CONTENT': 'block_none',
             })
-        # chat.history[1].role = "user"
-        # chat.history[1].parts[0].text = summary_text
-        
-        # chat.history[1].role = "model"
-        # chat.history[1].parts[0].text = "Sure this is the chat history for the 10 conversation we had in the past"
-        summeries.append({
-              "role": "user",
-              "parts": [{"text": summary_text}]
-        })
-        summeries.append({
-            "role": "model",
-            "parts": [{"text": "Sure, this is the chat history for conversations we had in the past. here the conversation I the bot am the narrator and im talking about you .im narating what you talked to me"}]
-        })
         
         chat.history.append({
             "role": "user",
@@ -271,8 +273,9 @@ def handle_message(user_message ):
             "parts": [{"text": "Sure, this is the chat history for conversations we had in the past. here the conversation I the bot am the narrator and im talking about you .im narating what you talked to me"}]
         })
         iteration_count = 0  
-        print("Full conversation history:", chat.history , summeries)
+        print("Full conversation history:", chat.history)
 
 
+# Connect to the Node.js server
 sio.connect("http://localhost:3000")
 sio.wait()
